@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 # Set your Confluence server URL and API token
 source_base_url = "https://inpixon.atlassian.net/wiki"
 target_base_url = "https://cxapplucy.atlassian.net/wiki"
-username = "mail6gowthamdwd@gmail.com"
-password = "ATATT3xFfGF0Ah_u6_39uxUtrsdifcJzr5zq_e_ENlniqUr0ua-v_1--lvJwuigsAmv7sWe_yDgfR5beluvu5xSYnA7X_A-ZK3eT2gcQg9JZfCV3Jk2OjjkzzsOD0_TIpBXjQST-kJGR3SVxgN6VMx_FzXmEOpuWnlH74A-DUN81_464R45dgqE=FACB6C0F"
+username = "dinesh.ks@3ktechnologies.com"
+password = "ATATT3xFfGF0dis7h5dgUvuLTrv8Ox1n1rcVorV0Z7U3q2qLVSloWEltBK3dDGd6U2tTqYiOxMPA40iRIqwPuJO_JyXlEW_-N5yQ_kMrCYGBkk-G7-ZQNqWTQY21wuDRXj7qlc8nfznKsTSpcoF8oVYsA0SwLjKemdsm06t64dvsT2xf6qe2S8k=CC0CBC94"
 # Set the space key for the space you want to retrieve pages from
 space_key = "DATA"
 
