@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Spaces</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+            color: #ffffff;
+            outline: transparent;
+        }
+
+        body {
+            background: #000033;
+            padding: 24px 0 48px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            background: #45C86D;
+            padding: 8px 28px;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 32px;
+            border: none;
+            min-width: 200px;
+        }
+
+        button:disabled {
+            background: #cccccc;
+            pointer-events: none !important;
+        }
+
+        .container {
+            padding: 0 32px;
+        }
+
+        .container .wrapper {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*  */
+        .tabs-container {
+            margin-top: 32px;
+        }
+
+        .tabs-container .wrapper ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 65%;
+            border-radius: 6px 6px 0 0;
+            overflow: hidden;
+        }
+
+        .tabs-container .wrapper ul li {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tabs-container .wrapper ul li button {
+            width: 100%;
+            background: #13133E;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 12px 12px 0 0;
+            transition: all 0.2s ease;
+            border-top: 4px solid #13133E;
+        }
+
+        .tabs-container .wrapper ul li button.active {
+            background: #2B2B4B;
+            border-top: 4px solid #4e4e716f;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content .wrapper .inner-content {
+            width: 65%;
+            background: #2B2B4B;
+            border-radius: 0 0 6px 6px;
+            padding: 38px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            min-height: 70vh;
+            border-bottom: 2px solid #4e4e716f;
+        }
+
+        .tab-content .wrapper .inner-content h2 {
+            font-size: 24px;
+            border-bottom: 1px solid #e5e3e332;
+            margin-bottom: 18px;
+            padding-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .tab-content .wrapper .inner-content ul {
+            margin-top: 24px;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            background: #ffffff;
+            width: 80%;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .tab-content .wrapper .inner-content ul li {
+            color: #000033;
+            border-bottom: 1px solid #cccccc;
+            font-size: 16px;
+
+        }
+
+        .tab-content .wrapper .inner-content ul li button {
+            padding-bottom: 4px;
+            padding-left: 10px;
+            width: 100%;
+            background: none;
+            border-radius: 0;
+            color: #000000;
+            background: none;
+            text-align: left;
+        }
+
+        .tab-content .wrapper .inner-content ul li:last-child {
+            border: none;
+        }
+
+        .validator-wrapper .inner-content .dropdown-wrapper {
+            margin-bottom: 12px;
+        }
+
+        /*  */
+        .validator-wrapper .inner-content .dropdown-wrapper select {
+            color: #000033;
+            margin-left: 6px;
+            font-size: 16px;
+            border-radius: 6px;
+            padding: 4px 8px;
+        }
+
+        .validator-wrapper .inner-content .dropdown-wrapper select option {
+            color: #000033;
+        }
+
+        .validator-wrapper .inner-content .download-link-container {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .validator-wrapper .inner-content .download-link-container p {
+            text-transform: capitalize;
+        }
+
+        .validator-wrapper .inner-content .download-link-container .links-container {
+            background: none;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .validator-wrapper .inner-content .download-link-container .links-container li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .validator-wrapper .inner-content .download-link-container .links-container li p {
+            color: #ffffff;
+        }
+
+        .validator-wrapper .inner-content .download-link-container .links-container li a {
+            font-size: 16px;
+            background: #ffffff;
+            color: #000033;
+            padding: 2px 16px;
+            border-radius: 6px;
+        }
+
+        .validator-wrapper .inner-content .download-link-container .links-container li a:hover {
+            text-decoration: underline;
+        }
+
+        .validator-wrapper .inner-content .loader-container {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .validator-wrapper .inner-content .loader-container p {
+            font-size: 12px;
+        }
+
+        .validator-wrapper .inner-content .time-stamp-container {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        /*  */
+        .loader {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: block;
+            margin: 15px auto;
+            position: relative;
+            color: #FFF;
+            box-sizing: border-box;
+            animation: animloader 1.5s linear infinite;
+        }
+
+        @keyframes animloader {
+            0% {
+                box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+            }
+
+            25% {
+                box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 2px;
+            }
+
+            50% {
+                box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 2px, -38px 0 0 -2px;
+            }
+
+            75% {
+                box-shadow: 14px 0 0 2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+            }
+
+            100% {
+                box-shadow: 14px 0 0 -2px, 38px 0 0 2px, -14px 0 0 -2px, -38px 0 0 -2px;
+            }
+        }
+
+        /* Popup */
+
+        .error-popup {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .error-popup .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .error-popup .wrapper {
+            position: relative;
+            z-index: 9;
+            background: #323232;
+            padding: 24px 32px;
+            border-radius: 10px;
+            min-width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            animation: reveal 0.4s ease forwards;
+            border: 1px solid #cccccc1b;
+        }
+
+        .error-popup .wrapper .header {
+            margin-bottom: 12px;
+            border-bottom: 1px solid #cccccc;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 8px;
+        }
+
+        .error-popup .wrapper .header h3 {
+            color: #f94a4a;
+            font-size: 26px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .error-popup .wrapper .body {
+            margin-bottom: 24px;
+        }
+
+        .error-popup .wrapper .body p:first-child {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .error-popup .wrapper .body p:last-child {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .error-popup .wrapper .footer button {
+            background: #fb2525;
+            color: #ffffff;
+            border: 1px solid #fb2525;
+            min-width: unset;
+            border-radius: 6px;
+            padding: 4px 32px;
+            font-size: 16px;
+        }
+
+        .info-message {
+            display: none;
+            text-transform: capitalize;
+        }
+
+        .info-message span {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+
+        @keyframes reveal {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container tabs-container">
+        <div class="wrapper">
+            <ul>
+                <li>
+                    <button class="active">Spaces List</button>
+                </li>
+                <li>
+                    <button>Validate Migration</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container tab-content space-lists-wrapper active">
+        <div class="wrapper">
+            <div class="inner-content">
+                <h2>List of Spaces</h2>
+                <button class="get-list-btn">Get List of Spaces</button>
+                <ul class="spaces-output-container">
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container tab-content validator-wrapper ">
+        <div class="wrapper">
+            <div class="inner-content">
+                <h2>Validating Migrated Spaces</h2>
+                <div class="dropdown-wrapper">
+                    <label>Select a Space:</label>
+                    <select class="spaces-dropdown">
+                        <option value="AN">Analytics</option>
+                        <option value="AD">API Documentation</option>
+                        <option value="ARS">Augmented Reality Services</option>
+                        <option value="SUP">Customer Success</option>
+                        <option value="CXAProd">CXApp Product</option>
+                        <option value="DATA">Data</option>
+                        <option value="DCC">Document Change Control</option>
+                        <option value="EN">Engineering</option>
+                        <option value="GI">Guilds Of Inpixon</option>
+                        <option value="InfoSec">InfoSec</option>
+                        <option value="IPROC">ISO Procedures</option>
+                        <option value="ITOPS">IT Ops</option>
+                        <option value="JSDOCS">Jibestream Client Portal</option>
+                        <option value="JS4">Jibestream Releases</option>
+                        <option value="MKTING">Marketing</option>
+                        <option value="TEAM">My first space</option>
+                        <option value="PAR">Partners</option>
+                        <option value="POH">People Operations - HR</option>
+                        <option value="PROD">Product</option>
+                        <option value="ProdOps">Production Operations</option>
+                        <option value="DOC">Product Management</option>
+                        <option value="PS">Professional Services</option>
+                    </select>
+                </div>
+                <button class="validate-btn">Validate</button>
+
+                <div class="time-stamp-container">
+                    <p>Time Elapsed :</p>
+                    <p class="time"></p>
+                </div>
+
+                <p class="info-message"></p>
+
+                <div class="loader-container">
+                    <span class="loader"></span>
+                    <p>Please wait....</p>
+                </div>
+
+                <div class="download-link-container">
+                    <p class="message"></p>
+                    <ul class="links-container">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Popup -->
+    <div class="error-popup">
+        <div class="wrapper">
+            <div class="header">
+                <h3>Error !</h3>
+            </div>
+            <div class="body">
+                <p>Something went wrong</p>
+                <p>try again</p>
+            </div>
+            <div class="footer">
+                <button class="popup-close-btn">Close</button>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+    <script>
+        const $mainTabs = $(".tabs-container ul li button");
+        const $tabContent = $(".tab-content");
+        const $getAllListBtn = $(".space-lists-wrapper .get-list-btn");
+        const $outputContaner = $(".spaces-output-container");
+        const $spaceDropdown = $(".spaces-dropdown");
+        const $validateBtn = $(".validate-btn");
+        const $downloadLinkContainer = $(".download-link-container");
+        const $loader = $(".loader-container");
+        const $timeStamp = $(".time-stamp-container");
+        const $errorPopup = $(".error-popup");
+        const $infoMessage = $(".info-message");
+
+        let interval;
+
+        $errorPopup.find(".popup-close-btn").on("click", function () {
+            $errorPopup.hide();
+        })
+
+        $mainTabs.on("click", function () {
+            $mainTabs.removeClass("active");
+            $(this).addClass("active");
+            $tabContent.removeClass("active").eq($(this).parent().index()).addClass("active");
+            $(this).parent().index() === 1 && $outputContaner.html("").hide();
+        })
+
+        // Spaces List
+        $getAllListBtn.on("click", function () {
+            $.ajax({
+                url: "/list_spaces",
+                type: 'GET',
+                dataType: "json",
+                success: (res) => {
+                    renderAllSpaceList(res);
+                },
+                error: (err) => {
+                    console.log(err);
+                    $errorPopup.css("display", "flex");
+                }
+            })
+        })
+
+        function renderAllSpaceList(data) {
+            $outputContaner.css("display", "flex").html("");
+            data.length && data.forEach((item, index) => {
+                if (!item.value.includes("~")) {
+                    const list = `<li><button data-value=${item.value}>${item.name}</button></li>`;
+                    $outputContaner.append(list);
+                }
+            });
+
+            const spacesList = $(".spaces-output-container li button");
+            spacesList.on("click", function () {
+                const spaceValue = $(this).data("value");
+                redirectToTitlePage(spaceValue)
+            })
+        };
+
+        function redirectToTitlePage(spaceValue) {
+            window.open(`/title.html?space-value=${spaceValue}`, "_self");
+        }
+
+        // Validation
+        $validateBtn.on("click", function () {
+            const dropdownValue = $spaceDropdown.val();
+            $(this).attr("disabled", true);
+            $loader.show();
+            $timeStamp.css("display", "flex");
+            setTime();
+            $mainTabs.attr("disabled", true);
+            $downloadLinkContainer.hide().find("ul").html("");
+            $infoMessage.html(`Validation started for <span>${$spaceDropdown.find('option:selected').text()}</span> space`).show();
+
+            $.ajax({
+                url: `/space_validation?space=${dropdownValue}`,
+                type: 'GET',
+                dataType: "json",
+                success: (res) => {
+                    console.log(res);
+                    if (res && res.file_name.length) {
+                        $downloadLinkContainer.find("p").html(res.message);
+                        res.file_name.forEach((item, index) => {
+                            const list = `
+                                        <li>
+                                            <p>Download File : </p>
+                                            <a href=${index === 0 ? "/download_matchedfile" : "/download_missingfile"}?${item} download>${item}</a>    
+                                        </li>    
+                                        `;
+                            $downloadLinkContainer.find("ul").append(list);
+                        });
+                        $downloadLinkContainer.show();
+                        $infoMessage.html(`validation completed for <span>${$spaceDropdown.find('option:selected').text()} space`).show();
+                    } else {
+                        $errorPopup.css("display", "flex");
+                        $infoMessage.html(`error occured on validation`).show();
+                    }
+                    $loader.hide();
+                    clearTimeOut();
+                    $(this).attr("disabled", false);
+                    $mainTabs.attr("disabled", false);
+                },
+                error: (err) => {
+                    console.log(err);
+                    $loader.hide();
+                    clearTimeOut();
+                    $(this).attr("disabled", false);
+                    $mainTabs.attr("disabled", false);
+                    $errorPopup.css("display", "flex");
+                    $infoMessage.html(`error occured on validation`).show();
+                }
+            })
+        });
+
+        function setTime() {
+            let seconds = 0;
+            let minutes = 0;
+            let hours = 0;
+            interval = setInterval(function () {
+                seconds++;
+                if (seconds === 60) {
+                    minutes++;
+                    seconds = 0;
+                };
+                if (minutes === 60) {
+                    hours++;
+                    minutes = 0;
+                }
+
+                $timeStamp.find(".time").html(`<span>${String(hours).padStart(2, "0")}</span><span>:</span><span>${String(minutes).padStart(2, "0")}</span><span>:</span><span>${String(seconds).padStart(2, "0")}</span>`);
+            }, 1000);
+        }
+
+        function clearTimeOut() {
+            clearInterval(interval);
+            interval = 0;
+        }
+    </script>
+</body>
+
+</html>
+
+</body>
+
+</html>
