@@ -9,11 +9,6 @@ import queue
 # Create a queue to store the XLSX file names
 xlsx_queue = queue.Queue()
 
-# Set your Confluence server URL and API token
-source_base_url = "https://inpixon.atlassian.net/wiki"
-target_base_url = "https://cxapplucy.atlassian.net/wiki"
-username = "mail6gowthamdwd@gmail.com"
-password = "ATATT3xFfGF0as-kz6g-kLbLRj2NtiSYv6Mt4d_JNJicl92zPoY0cGaTIu2t5qcPjMgPCvADotB7pz7Yds5kYFj5bXxKuGpnofZqjQAPxZG1k2dtSVQnZKnZKOgfM5NpRYPuLiq5cDAXeIJxuYVJ8KTIGdtQJI2KY-4LfSLzGUvEnUfxq5TaOzc=F9B0A2B9"
 
 # Set the space key for the space you want to retrieve pages from
 space_key = "DATA"
